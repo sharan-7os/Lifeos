@@ -4,6 +4,7 @@ import {
   login,
   register,
   getProfile,
+  
   logout,
 } from '../controllers/authController.js';
 

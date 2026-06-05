@@ -8,6 +8,7 @@ function Register() {
 
   const [formData, setFormData] = useState({
     name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -31,6 +32,7 @@ function Register() {
     try {
       const response = await registerUser(
         formData.name,
+        formData.username,
         formData.email,
         formData.password
       );
@@ -65,6 +67,19 @@ function Register() {
               name="name"
               placeholder="Enter your full name"
               value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Username</label>
+
+            <input
+              type="text"
+              name="username"
+              placeholder="Choose a username"
+              value={formData.username}
               onChange={handleChange}
               required
             />
