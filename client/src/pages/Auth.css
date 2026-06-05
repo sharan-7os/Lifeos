@@ -1,0 +1,327 @@
+/* ============================================
+   MOTION BACKGROUND & ANIMATIONS
+   ============================================ */
+
+@keyframes backgroundMove {
+  0% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+
+  25% {
+    transform: scale(1.08) translateX(-30px) translateY(-15px);
+  }
+
+  50% {
+    transform: scale(1.12) translateX(30px) translateY(15px);
+  }
+
+  75% {
+    transform: scale(1.08) translateX(-15px) translateY(25px);
+  }
+
+  100% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes blob {
+  0%,100% {
+    transform: translate(0,0) scale(1);
+  }
+  33% {
+    transform: translate(30px,-50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px,20px) scale(0.9);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ============================================
+   AUTH PAGE BACKGROUND
+   ============================================ */
+
+.login-page {
+  min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Main Moving Image */
+.login-page::before {
+  content: "";
+  position: absolute;
+
+  top: -10%;
+  left: -10%;
+
+  width: 120%;
+  height: 120%;
+
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  animation: backgroundMove 25s ease-in-out infinite;
+
+  z-index: -3;
+}
+
+/* Dark Overlay */
+.login-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(2px);
+
+  z-index: -2;
+}
+
+/* Floating Glow 1 */
+.login-page .bg-glow-1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.2),
+    transparent 70%
+  );
+
+  top: -150px;
+  left: -150px;
+
+  border-radius: 50%;
+
+  animation: blob 10s infinite;
+
+  z-index: -1;
+}
+
+/* Floating Glow 2 */
+.login-page .bg-glow-2 {
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 0.15),
+    transparent 70%
+  );
+
+  bottom: -100px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  animation: blob 12s infinite reverse;
+
+  z-index: -1;
+}
+
+/* ============================================
+   AUTH CARD STYLING
+   ============================================ */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  padding: 2.5rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    0 0 40px rgba(255,255,255,0.08);
+
+  animation: slideUp 0.7s ease-out;
+
+  position: relative;
+  z-index: 10;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.35),
+    0 0 60px rgba(0,255,255,0.15);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.login-card h1 {
+  text-align: center;
+
+  font-size: 2.5rem;
+
+  color: white;
+
+  margin-bottom: 10px;
+
+  font-weight: 800;
+
+  animation: slideUp 0.6s ease-out;
+}
+
+.login-card p {
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.form-group input:focus {
+  outline: none;
+
+  border-color: #00ffff;
+
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+/* ============================================
+   BUTTON
+   ============================================ */
+
+button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+  );
+
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 30px rgba(0,114,255,0.4);
+}
+
+button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -1000px;
+
+  width: 1000px;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+
+  animation: shimmer 3s infinite;
+}
