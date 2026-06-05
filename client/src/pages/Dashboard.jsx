@@ -66,20 +66,20 @@ function Dashboard() {
             <div className="menu-dropdown">
               <div className="menu-top">
 
+
   <button
     className="close-menu-btn"
     onClick={() => setMenuOpen(false)}
   >
     ← Back
   </button>
-
-</div>
-
               <div className="menu-profile">
-                <h4>👤 Profile</h4>
-                <p>{user?.name}</p>
+                <h4>👤{user?.name}</h4>
+                
                 <p>{user?.email}</p>
               </div>
+</div>
+
 
               <hr />
 
