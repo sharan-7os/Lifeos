@@ -8,6 +8,7 @@ function Dashboard() {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchProfile();
@@ -52,21 +53,75 @@ function Dashboard() {
           <p>Your Personal Productivity Operating System</p>
         </div>
 
-        <button
-          className="logout-btn"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+        <div className="header-actions">
+
+          <button
+            className="menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+
+          {menuOpen && (
+            <div className="menu-dropdown">
+              <div className="menu-top">
+
+  <button
+    className="close-menu-btn"
+    onClick={() => setMenuOpen(false)}
+  >
+    ← Back
+  </button>
+
+</div>
+
+              <div className="menu-profile">
+                <h4>👤 Profile</h4>
+                <p>{user?.name}</p>
+                <p>{user?.email}</p>
+              </div>
+
+              <hr />
+
+              <button>🏠 Dashboard</button>
+
+              <button>👨‍👩‍👧 Household</button>
+
+              <button>📝 Home Tasks</button>
+
+              <button>✅ Personal Tasks</button>
+
+              <button>💼 Work Tasks</button>
+
+              <button>🛒 Inventory</button>
+
+              <button>💰 Expenses</button>
+
+              <button>📄 Documents</button>
+
+              <button>📦 Assets</button>
+
+              <button>⚙️ Settings</button>
+
+              <hr />
+
+              <button
+                className="menu-logout"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+
+            </div>
+          )}
+
+        </div>
 
       </header>
 
       <section className="welcome-section">
-        <h2>Welcome back, {user?.name} 👋</h2>
-        <p>{user?.email}</p>
+        <h2>Welcome  {user?.name} 👋</h2>
       </section>
-
-      
 
     </div>
   );
